@@ -1,0 +1,160 @@
+ <nav class="red" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="" class="brand-logo">Shops</a>
+          <a ng-click="moveState('home')" ><i class="large material-icons">arrow_back</i></a>
+          <a href="" data-activates="nav-filter" class="button-filter forward"><i class="large material-icons">more_vert</i></a></li>
+        </div>
+    </nav>
+     <div id="nav-filter" class="side-nav">
+            <div class="filter-header">Filters</div>
+            <div class="filter-content">
+              <h4>Sort by</h4>
+              <form action="#">
+                <p>
+                  <input name="group1" type="radio" id="test1" value="popularity(HtoL)" ng-model="filterData.sortBy"/>
+                  <label for="test1">Popularity(H to L)</label>
+                </p>
+                <p>
+                  <input name="group1" type="radio" id="test2" value="rating(HtoL)" ng-model="filterData.sortBy"/>
+                  <label for="test2">Rating(H to L)</label>
+                </p>
+                <p>
+                  <input  name="group1" type="radio"id="test3"  value="price(HtoL)" ng-model="filterData.sortBy"/>
+                  <label for="test3">Price(H to L)</label>
+                </p>
+                  <p>
+                    <input name="group1" type="radio"id="test4" value="price(LtoH)" ng-model="filterData.sortBy"/>
+                    <label for="test4">Price(L to H)</label>
+                </p>
+                  <p>
+                    <input name="group1" type="radio"id="test5" value="recentlyadded" ng-model="filterData.sortBy"/>
+                    <label for="test5">Recently added</label>
+                </p>
+                </form>
+            </div>
+            <div class="filter-content">
+              <h4>Areas</h4>
+                <form action="#">
+                <p ng-repeat="area in areas track by $index">
+                  <input type="checkbox" id="{{area.name}}" data-checklist-model="filterData.areas" data-checklist-value="area"/>
+                  <label for="{{area.name}}">{{area.name}}</label>
+                </p>
+              </form>
+            </div>
+            <div class="filter-content" ng-init="categories=[{id:1,name:'Mens'},{id:2,name:'Womens'},{id:3,name:'Kids'}]">
+              <h4>Category</h4>
+              <form action="#">
+                <p ng-repeat="category in categories track by $index">
+                  <input type="checkbox" id="{{category.name}}"  data-checklist-model="filterData.categories" data-checklist-value="category"/>
+                  <label for="{{category.name}}">{{category.name}}</label>
+                </p>
+              </form>
+            </div>
+            <div class="filter-content">
+               <div>
+                <button class="btn btn-block ripple-effect" type="submit" name="Submit" alt="apply" ng-click="advanceFilter()">Apply</button>  
+              </div>
+            </div>
+        </div>
+          
+    <div class="col s12"> 
+         <div class="col s10" >
+            <div class="container-3">
+                <span class="icon"><i class="small material-icons">search</i></span>
+                <input type="search" id="search" placeholder="Search..." ng-model="searchData" ng-change="search()"/>
+            </div>
+        </div>
+        </div>
+
+<div class="list-row row">
+  <div class="col s12 m7" ng-repeat="shop in shops track by shop.id">
+    <div class="card small" ng-click="moveState('detail',shop.id)">
+      <div class="card-image">
+          <img ng-src="{{shop.banner}}">
+      </div>
+      <div class="card-content" style="text-align:center;">
+        <span class="card-title">{{shop.name}}</span><span class="rating-box right">{{shop.rating}}</span>
+        <p>{{shop.address1}}{{","+shop.city}}{{"-"+shop.pin}}</p>
+      </div>
+      <div class="card-action" style="text-align:center;">
+        <div class="action-row row">
+         <div class="col s12">
+            <div class="col s4 list-icon" ng-click="callNumber(shop.phone1)"><a href=""><i class="material-icons">phone</i></a></div>
+            <div class="col s4 list-icon" ng-click="callMap(shop);$event.stopPropagation()"><a href=""><i class="material-icons">place</i></a></div>           
+            <div class="col s4" ng-click="callNumber(share)"><a href=""><i class="material-icons">share</i></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $('.button-filter').sideNav({
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      }
+    );
+    $('ul.tabs').tabs();
+    $('.collapsible').collapsible({
+       accordion : false
+     });
+    $('.slider').slider({full_width: false}); 
+     $(document).ready(function() {
+      $('select').material_select();
+    });
+</script>
+<style>
+.container-3{
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+ 
+.container-3 input#search{
+    height: 45px;
+    border: 1px solid #F44336;
+    font-size: 10pt;
+    float: left;
+    color: #262626;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #F44336;
+    box-shadow: none !important;
+    margin-top: 5px;
+}
+.container-3 input#search::-webkit-input-placeholder {
+   color: #F44336;
+}
+ 
+
+.container-3 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #F44336;
+ 
+   -webkit-transition: all .55s ease;
+  -moz-transition: all .55s ease;
+  -ms-transition: all .55s ease;
+  -o-transition: all .55s ease;
+  transition: all .55s ease;
+}
+
+.filter-header{
+  text-align: center;
+  background-color: #F44336;
+  color: white;
+  height: 50px;
+  padding: 15px;
+}
+.filter-content{
+  padding:5px;
+}
+</style>

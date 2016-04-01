@@ -1,0 +1,176 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">General</h1>        
+    </div>
+</div> 
+<div class="row"  ng-show="page===1"> 
+    <div class="col-lg-12">        
+        <div class="panel panel-default">
+            <div class="alert alert-danger" ng-show="!form.$valid && submitted">
+                    Please Fill the All details.
+             </div>
+            <div class="panel-heading">
+                General
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form role="form" name="form" novalidate>
+                        <div class="row col-lg-12" style="padding-bottom:10px">
+                            <button class="btn btn-small btn-success pull-right" ng-click="move('front',form)">Next</button>
+                        </div> 
+                            <div class="form-group">
+                                <label>Name*</label>
+                                <input name="name" class="form-control" ng-model="shop.name" required>
+                                <p class="help-block">Enter Shop Name.</p>
+                                <span class="error-msg" ng-show="form.name.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group" >
+                                <label>Description*</label>
+                                <textarea name="description" class="form-control" rows="3" ng-model="shop.description" required></textarea>
+                                <span class="error-msg" ng-show="form.description.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group" >
+                                <label>Address1*</label>
+                                <textarea name="address1" class="form-control" rows="3" ng-model="shop.address.address1" required></textarea>
+                                <span class="error-msg" ng-show="form.address1.$invalid && submitted"> This is required </span>
+                            </div>
+                             <div class="form-group">
+                                <label>Address2</label>
+                                <textarea class="form-control" rows="3" ng-model="shop.address.address2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile*</label>
+                                <input name="mobile" class="form-control" ng-model="shop.address.mobile" required>
+                                <span class="error-msg" ng-show="form.mobile.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input class="form-control" ng-model="shop.address.phone">                                
+                            </div>
+                            <div class="form-group">
+                                <label>Area*</label>
+                                 <select  class="form-control" ng-model="shop.address.area" name="area" required>
+                                    <option value="" disabled>Select area</option>
+                                <option ng-repeat="area in areas" value="{{area.name}}">{{area.name}}</option>
+                                </select>
+                                <span class="error-msg" ng-show="form.area.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <label>City*</label>
+                                <input class="form-control" ng-model="shop.address.city" name="city" required>
+                                <span class="error-msg" ng-show="form.city.$invalid && submitted"> This is required </span>
+                            </div>
+                             <div class="form-group">
+                                <label>Pin*</label>
+                                <input class="form-control" ng-model="shop.address.pin" name="pin" required>
+                                <span class="error-msg" ng-show="form.pin.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <label>State*</label>
+                                <input class="form-control" ng-model="shop.address.state">
+                            </div>
+                            <div class="form-group">
+                                <label>Country*</label>
+                                <input class="form-control" ng-model="shop.address.country">
+                            </div>
+                             <div class="form-group">
+                                <label>Banner Image*</label>
+                                <input name="banner_image" class="form-control hide" ng-model="shop.banner_image" id="bannerImages" type="file" required>
+                                <button class="btn btn-primary"  onclick="document.getElementById('bannerImages').click()" > Choose </button>
+                                <div ng-show="shop.banner_image" style="margin-top :5px">
+                                <img ng-src="{{shop.banner_image}}" width="350" height="150">
+                                </div>
+                                 <span class="error-msg" ng-show="form.banner_image.$invalid && submitted"> This is required </span>
+                            </div>                             
+                        </form>
+                    </div>
+
+                </div>
+               
+            </div>
+           
+        </div>
+       
+    </div>
+  
+</div>
+
+
+
+            <div class="row" ng-show="page===2">
+                <div class="row col-xs-12" style="padding-bottom:10px">
+                    <button class="btn btn-small btn-success pull-right" ng-click="move('front',form)">Next</button>
+                    <button class="btn btn-small btn-danger pull-right" ng-click="move('back')">Back</button>
+                </div> 
+                <div style="text-align: center;margin-bottom: 10px;">
+                <input id="shopImages" type="file"  name="file"  class="hide">
+                <a class="btn btn-primary" onclick="document.getElementById('shopImages').click()">Add Images</a><div><a>Total:{{selectedImages.length}}</a></div>
+                </div>
+                <div class="col-xs-12" ng-repeat="image in selectedImages track by $index">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img ng-src="{{image}}" width="350" height="150">
+                            <div style="margin-left: 13px;margin-top: 10px;"><button class="btn btn-small btn-danger" ng-click="removeImages($index)">Remove</button>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+<div class="row col-lg-12" ng-show="page===3">
+    <div class="row col-lg-12" style="padding-bottom:10px">
+                            <button class="btn btn-small btn-danger pull-right" ng-click="move('back')">Back</button>
+                </div>
+    <div class="form-group">
+        <label>Choose Category</label>
+        <select class="form-control" ng-model="category">
+            <option value="1">Mens</option>
+            <option value="2">Womens</option>
+            <option value="3">Kids</option>
+        </select>
+    </div>
+
+<div class="panel panel-default" >
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="checkbox" ng-repeat="cat in subCategories |filter:{ category_type: '1' }: true track by $index" ng-if="category === '1'">
+                        <label>
+                            <input type="checkbox" data-checklist-model="selectedCategory" data-checklist-value="cat.id">{{cat.name}}
+                        </label>
+                    </div>
+                    <div class="checkbox" ng-repeat="cat in subCategories |filter:{ category_type: '2' }: true track by $index" ng-if="category === '2'">
+                        <label>
+                            <input type="checkbox" data-checklist-model="selectedCategory" data-checklist-value="cat.id">{{cat.name}}
+                        </label>
+                    </div>
+                    <div class="checkbox" ng-repeat="cat in subCategories |filter:{ category_type: '3' }: true track by $index" ng-if="category === '3'">
+                        <label>
+                            <input type="checkbox" data-checklist-model="selectedCategory" data-checklist-value="cat.id">{{cat.name}}
+                        </label>
+                    </div>
+                </div> 
+            </div>
+ </div>
+</div>
+
+</div>
+<div style="text-align:center">
+<button type="submit" class="btn btn-primary" ng-click="saveShop()">Submit Button</button>
+<button type="reset" class="btn btn-danger">Reset Button</button>
+</div>
+</div>
+
+ <style>
+ .error-msg{
+    color:red;
+ }
+ </style>

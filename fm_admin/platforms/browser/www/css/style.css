@@ -1,0 +1,220 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+
+nav ul a,
+nav .brand-logo {
+  color: #F5F5F5;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #F5F5F5;
+}
+.slider{
+  height: 250px !important;
+}
+.slides{
+  height: 250px !important;
+}
+.slider .indicators {
+    top: 225px !important;
+    z-index: 2;
+}
+
+.row.no-gutter [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+.item_name{
+  font-weight: bold;
+  color: #ee6e73;
+  font-size: 18px;
+  padding-top: 15px !important;
+  text-align: left;
+}
+.item_price{
+  padding-top: 15px !important;
+  text-align: center;
+}
+.custom_field{
+  font-size: 1.5rem !important;
+  text-align: center;
+}
+nav .forward {
+    float: right !important;    
+}
+
+section{
+  margin-top: 20px;
+}
+
+.collapsible-header{
+  font-weight: bold;
+}
+
+a {
+    text-decoration: none !important;
+}
+.side-nav a {
+    color: #ee6e73 !important;
+    font-size: 1.5rem !important;
+}
+
+nav ul a:hover {
+    background-color: #ee6e73 !important;
+    color: white !important;
+}
+
+.transactions-container {
+  margin-top: 20px;
+  border-top: 1px solid #eaedef;
+  padding: 10px;
+  font-size: 13px;
+  position: relative;
+}
+
+.transactions-date-container {
+  border: 1px solid #eaedef;
+  max-width: 100px;
+}
+
+.transactions-date {
+  padding: 10px 2px 5px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.transactions-month {
+  font-size: 11px;
+  background-color: #F5F5F5;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.transactions-name {
+  font-size: 18px;
+}
+.transactions-phone {
+  font-size: 13px;
+}
+.transactions-address {
+  font-size: 11px;
+}
+
+.transactions-amount-container {
+  text-align: right;
+}
+.transactions-rs {
+  font-size: 12px;
+  color: #919bac;
+}
+.transactions-amount {
+  font-size: 18px;
+}
+
+.transactions-order-details {
+  margin-top: 10px;
+}
+.transactions-orderid {
+  color: #919bac;
+}
+.transactions-summary {
+  font-size: 12px;
+  color: #919bac;
+  font-style: italic;
+}
+
+
+
+
+ .twt-wrapper .panel-body {
+            overflow:auto;
+        }
+        .twt-wrapper .media-list .media img {
+            width:64px;
+            height:64px;
+            border:2px solid #e5e7e8;
+        }
+        .twt-wrapper .media-list .media {
+            border-bottom:1px dashed #efefef;
+            margin-bottom:25px;
+        }
+
+        .twt-wrapper .form-control {
+          border-color: #FFAB4B !important;
+        }
+        .twt-wrapper .panel-info>.panel-heading {
+          background-color: #ffffff !important;
+          border-color: #ffffff !important;
+        }
+
+  .category-div{
+    text-align: center;
+    margin-top: -20px;
+  }
+
+  .category-div a{
+    border-radius: 25px;
+    height: 30px;
+    line-height: 30px;
+    outline: 0;
+    padding: 0 3rem;
+    margin-left: 2px;
+  }
+
+  .shop-search{
+  padding: 15px;
+}
+.list-row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.rating-box{
+    border: 1px solid;
+    padding: 10px;
+    background-color: #F44336;
+    color: white;
+    /*border-radius: 20px;*/
+}
+.action-row{
+  margin-bottom: 0px !important;
+}
+.list-icon{
+      border-right: 1px solid #FFAB40;
+}
+.search-box{
+    background-color:white !important;
+    border: 2px solid #9e9e9e !important;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 1.5rem;
+    margin: 0 0 15px 0;
+    padding: 2px !important;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all .3s;
+    text-align: center;
+    border-radius: 35px !important;
+}
+
+.error-msg{
+  color: red;
+}
+
+.subheaders{
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px;
+}

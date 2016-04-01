@@ -1,0 +1,23 @@
+
+ <nav class="red" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="" class="brand-logo">Map</a>
+          <a ng-click="moveState('detail')" ><i class="large material-icons">arrow_back</i></a>
+        </div>
+    </nav>
+
+<div class="list-row row">
+   <google-map center="map.center" zoom="map.zoom" draggable="true">
+          <marker coords="locationPlace.coords" icon="locationPlace.icon">
+            <window coords="locationPlace.coords">{{shop.address1}}{{","+shop.city}}{{"-"+shop.pin}} </window>
+          </marker>
+          <polyline path="locationPlace.coords"></polyline>
+     </google-map>
+</div>
+<style>
+.detail-row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.angular-google-map-container { height: 700px; }
+</style>

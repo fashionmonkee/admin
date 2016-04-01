@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Register</h3>
+                </div>
+                <div class="panel-body">
+                    <form name="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Name" name="name" type="text" mg-model="user.name" autofocus>
+                                 <span class="error-msg" ng-show="form.name.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail" ng-model="user.email" name="email" type="email" autofocus>
+                                 <span class="error-msg" ng-show="form.email.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="password" type="password" ng-model="user.password">
+                                <span class="error-msg" ng-show="form.password.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Confirm Password" name="confirmpassword" type="password" ng-model="user.confirmpassword">
+                                <span class="error-msg" ng-show="form.confirmpassword.$invalid && submitted"> This is required </span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="City" name="city" type="text" mg-model="user.city" autofocus>
+                                 <span class="error-msg" ng-show="form.city.$invalid && submitted"> This is required </span>
+                            </div>                           
+                            
+                            <a ng-click="register(form)" class="btn btn-lg btn-success btn-block">Register</a>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

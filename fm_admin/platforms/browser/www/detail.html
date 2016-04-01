@@ -1,0 +1,169 @@
+ <nav class="red" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="#" class="brand-logo">Card Title</a>
+          <a ng-click="moveState('list')" ><i class="material-icons">arrow_back</i></a>
+        </div>
+    </nav>
+  <div class="detail-row row">
+  <div class="col s12 m7">
+    <div class="card small">
+      <div class="card-image">
+          <img ng-src="{{shop.banner}}">
+      </div>
+      <div class="card-content" style="text-align:center;">
+        <span class="card-title">{{shop.name}}</span><span class="rating-box right">{{shop.rating}}</span>
+        <p>{{shop.address1}}{{","+shop.city}}{{"-"+shop.pin}}</p>
+      </div>
+      <div class="card-action" style="text-align:center;">
+        <div class="action-row row">
+          <div class="col s12">
+            <div class="col s3 list-icon" ng-click="callNumber(shop.mobile)"><a href=""><i class="material-icons">phone</i></a></div>
+            <div class="col s3 list-icon" ng-click="callMap(shop)"><a href=""><i class="material-icons">place</i></a></div>
+            <div class="col s3 list-icon" ng-click="!isAuthenticated() ? moveState('login') : editRate('rate-modal')"><a  href=""><i class="material-icons">star</i></a></div>
+            <div class="col s3" ng-click="share(shop)"><a href=""><i class="material-icons">share</i></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+ <div class="detail-row row col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#general">General</a></li>
+        <li class="tab col s3"><a href="#reviews">Reviews</a></li>
+        <li class="tab col s3"><a  href="#catalog">Catalog</a></li>
+        <li class="tab col s3 disabled"><a href="#offers">Offers</a></li>
+      </ul>
+  </div>
+<div id="general" class="detail-row">
+<div class="col s12">
+<section>
+<h4 class="subheaders">Photos</h4>
+<div class="container-fluid">
+    <div class="row no-gutter list-row">
+        <div class="col-xs-4 col-sm-4 col-lg-4" ng-repeat="img in shop.images track by $index">
+            <a href="#" >
+                <img ng-src="{{img}}" class="img-responsive">
+            </a>
+        </div>
+    </div>
+</div>
+<h4 class="subheaders">Branches</h4>
+<div class="container-fluid">
+<ul class="collection with-header">
+    <li class="collection-item avatar" ng-repeat="branch in shop.branches">
+      <i class="material-icons circle green">room</i>
+      <span class="title"><b>{{branch.name}}</b></span>
+      <p>{{branch.address1}}{{","+branch.city}}{{"-"+branch.pin}}</p>
+      <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+    </li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+
+
+<div id="reviews" class="detail-row row">
+<div class="col s12">
+<section>
+ <div class="twt-wrapper">
+    <div class="panel panel-info">
+      <div class="panel-body">
+      <textarea class="form-control" placeholder="Enter your comments..." rows="3" ng-model="comment" ng-focus="!isAuthenticated() ? moveState('login') :''"></textarea>
+            <br/>
+            <a class="waves-effect waves-light btn" ng-disabled="comment.length<1" ng-click="postComment()"><i class="material-icons right">share</i>Share</a>
+                  <div class="clearfix"></div>
+                    <hr />
+            <div class="media-list">
+                <div class="media" ng-repeat="review in shop.reviews">
+                      <a href="" class="pull-left">
+                          <img ng-src="{{review.userImage}}" alt="" class="img-circle">
+                      </a>
+                      <div class="media-body">
+                        <span class="text-muted pull-right">
+                            <small class="text-muted">{{review.commentAt}}</small>
+                        </span>
+                        <strong class="text-success">@ {{review.userName}}</strong>
+                        <p>{{review.comment}}</p>
+                         <p ng-show="commonData.userId === review.userId">
+                          <a  href="" class="btn-floating btn-tiny waves-effect waves-light green " ng-click="editComment('comment-modal',review.comment)"><i class="tiny material-icons">edit</i></a>
+                          <a class="btn-floating btn-tiny waves-effect waves-light red"><i class="tiny material-icons">delete</i></a>                        
+                         </p>
+                        </div>                        
+                  </div>
+                </div>                            
+        </div>
+      </div>
+      </div>
+
+    </section>
+   </div> 
+ </div>
+
+<div id="catalog" class="detail-row row">
+    <div class="col s12">
+      <section>
+        <div>
+        <div class="category-div">
+          <a class="waves-effect waves-light btn" ng-click="setCategory(cat)" ng-repeat="cat in shop.maincategory">{{cat.name|uppercase}}</a>
+        </div>
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>{{mainCategory|uppercase}}</h4></li>
+          <li class="collection-item" ng-repeat="sub in shop.subcategory|filter:{type:mainCategory}:true">{{sub.name}}</li>
+        </ul>
+        </div>    
+      </section>
+    </div>
+</div>
+<!-- Modal Structure -->
+  <!-- Modal Structure -->
+  <div id="rate-modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Rating</h4>
+      <div class="row col s12">
+      <div class="col s10" star-rating rating="starRating" read-only="false" max-rating="5" click="rate(param)"></div>
+      <div class="col s2"><span class="rating-box">{{starRating}}</span></div>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="postRate()">Rate it
+      <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>
+  <div id="comment-modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Edit Comment</h4>
+      <div class="row col s12">
+      <textarea class="form-control" placeholder="Enter your comments..." rows="3" ng-model="comment"></textarea>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-light btn" ng-disabled="comment.length<1" ng-click="postComment()"><i class="material-icons right">share</i>Share</a>
+    </div>
+  </div>
+<script>
+    $('.button-collapse').sideNav();
+    $('ul.tabs').tabs();
+    $('.collapsible').collapsible({
+       accordion : false
+     });
+    $('.slider').slider({full_width: false});
+     $('.modal-trigger').leanModal({
+      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      out_duration: 200, // Transition out duration
+      ready: function() { alert('Ready'); }, // Callback for Modal open
+      complete: function() { alert('Closed'); } // Callback for Modal close
+    }
+  ); 
+</script>
+<style>
+.detail-row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+</style>

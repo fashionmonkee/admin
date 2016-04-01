@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        }
+    },
+    "dependent_plugins": {}
+}
