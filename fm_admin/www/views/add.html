@@ -22,7 +22,6 @@
                             <div class="form-group">
                                 <label>Name*</label>
                                 <input name="name" class="form-control" ng-model="shop.name" required>
-                                <p class="help-block">Enter Shop Name.</p>
                                 <span class="error-msg" ng-show="form.name.$invalid && submitted"> This is required </span>
                             </div>
                             <div class="form-group" >
@@ -79,7 +78,7 @@
                                 <input name="banner_image" class="form-control hide" ng-model="shop.banner_image" id="bannerImages" type="file" required>
                                 <button class="btn btn-primary"  onclick="document.getElementById('bannerImages').click()" > Choose </button>
                                 <div ng-show="shop.banner_image" style="margin-top :5px">
-                                <img ng-src="{{shop.banner_image}}" width="350" height="150">
+                                <img ng-src="{{shop.banner_image}}" width="250" height="150">
                                 </div>
                                  <span class="error-msg" ng-show="form.banner_image.$invalid && submitted"> This is required </span>
                             </div>                             
@@ -110,7 +109,7 @@
                 <div class="col-xs-12" ng-repeat="image in selectedImages track by $index">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <img ng-src="{{image}}" width="350" height="150">
+                            <img ng-src="{{image}}" width="250" height="150">
                             <div style="margin-left: 13px;margin-top: 10px;"><button class="btn btn-small btn-danger" ng-click="removeImages($index)">Remove</button>
                             </div>
                         </div>    
