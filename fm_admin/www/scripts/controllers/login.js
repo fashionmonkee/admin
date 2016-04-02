@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('LoginCtrl', function($scope) {
+  .controller('LoginCtrl', function($scope,$auth,$state,localStorageService) {
 
   	$scope.login = function(form) {
       $scope.submitted=true;

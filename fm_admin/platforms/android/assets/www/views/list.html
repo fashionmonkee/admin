@@ -6,10 +6,17 @@
             <!-- /.row -->
             <div class="row">
                 <div class="form-group col-lg-12">
-                <input class="form-control" placeholder="search" ng-model="search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
                 </div>
-                <div class="col-lg-4" ng-repeat="shop in shops|filter:search">
-                    <div class="panel panel-default">
+                </div>
+                <div class="col-lg-4" ng-repeat="shop in shops|filter:search"  ng-click="edit(shop.id)">
+                    <div class="panel panel-default" style="height:150px">
                         <div class="panel-heading">
                             {{shop.name}}                            
                         </div>

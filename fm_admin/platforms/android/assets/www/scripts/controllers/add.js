@@ -6,7 +6,7 @@
  * # MainCtrl
  * Controller of the sbAdminApp
  */
-angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
+angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state) {
 	  $scope.page=1;
     $scope.category="1";
     $scope.selectedImages=[];
@@ -41,6 +41,7 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
       $scope.shop.images=$scope.selectedImages;
       Api.save($scope.shop).then(function(response) {
         console.log(response);
+        $state.go('dashboard.list');
       });    
     };
 
@@ -58,9 +59,9 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
       }
     };
 
-    /*$scope.getItems=function(item){
+    $scope.getItems=function(item){
       var getItems=new $api(item);
-      getItems.get(1).then(function(response) {
+      getItems.get($state.params.data).then(function(response) {
         angular.forEach(response.data.images, function(value, key){
           $scope.selectedImages.push(value.image_url);
         });
@@ -70,7 +71,9 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
         $scope.shop=response.data;
     });
     };
-    $scope.getItems("shops");*/
+    if($state.params.data !== null){
+      $scope.getItems("shops");
+    }    
 
     $scope.getCategory=function(endpoint){
       var Api=new $api(endpoint);
@@ -123,7 +126,7 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
     };
 
     $scope.removeImages=function(index){
-      $scope.shop.images.splice(index, 1);
+      $scope.selectedImages.splice(index, 1);
     };
 
     

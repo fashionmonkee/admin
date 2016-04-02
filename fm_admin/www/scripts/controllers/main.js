@@ -7,5 +7,8 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope,$position) {
+  .controller('MainCtrl', function($scope,$position,$auth) {
+  	$scope.isAuthenticated = function() {
+	      return $auth.isAuthenticated();
+	    };
   });

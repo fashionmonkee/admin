@@ -9,24 +9,24 @@
                     <form name="form">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Name" name="name" type="text" mg-model="user.name" autofocus>
-                                 <span class="error-msg" ng-show="form.name.$invalid && submitted"> This is required </span>
+                                <input class="form-control" placeholder="Name" name="name" type="text" ng-model="user.name" required>
+                                <span class="error-msg" ng-show="form.name.$invalid && submitted"> This is required </span>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail" ng-model="user.email" name="email" type="email" autofocus>
-                                 <span class="error-msg" ng-show="form.email.$invalid && submitted"> This is required </span>
+                                <input class="form-control" placeholder="E-mail" name="email" type="email" ng-model="user.email" required>
+                                <span class="error-msg" ng-show="form.email.$invalid && submitted"> This is required </span>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" ng-model="user.password">
+                                <input class="form-control" placeholder="Password" name="password" type="password" ng-model="user.password" required>
                                 <span class="error-msg" ng-show="form.password.$invalid && submitted"> This is required </span>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Confirm Password" name="confirmpassword" type="password" ng-model="user.confirmpassword">
+                                <input class="form-control" placeholder="Confirm Password" name="confirmpassword" type="password" ng-model="user.confirmpassword" required>
                                 <span class="error-msg" ng-show="form.confirmpassword.$invalid && submitted"> This is required </span>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="City" name="city" type="text" mg-model="user.city" autofocus>
-                                 <span class="error-msg" ng-show="form.city.$invalid && submitted"> This is required </span>
+                                <input class="form-control" placeholder="City" name="city" type="text" ng-model="user.city" required>
+                                <span class="error-msg" ng-show="form.city.$invalid && submitted"> This is required </span>
                             </div>                           
                             
                             <a ng-click="register(form)" class="btn btn-lg btn-success btn-block">Register</a>

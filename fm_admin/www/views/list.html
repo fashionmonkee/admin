@@ -15,7 +15,7 @@
                     </span>
                 </div>
                 </div>
-                <div class="col-lg-4" ng-repeat="shop in shops|filter:search" >
+                <div class="col-lg-4" ng-repeat="shop in shops|filter:search"  ng-click="edit(shop.id)">
                     <div class="panel panel-default" style="height:150px">
                         <div class="panel-heading">
                             {{shop.name}}                            

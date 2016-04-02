@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sbAdminApp').service('$api', function($http, $q) {
-  var baseUrl="http://localhost/";
+  var baseUrl="http://10.0.0.139/";
   var currentdate = new Date(); 
   var datetime = "Last Sync: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
