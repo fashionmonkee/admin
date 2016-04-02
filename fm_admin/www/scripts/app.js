@@ -13,6 +13,7 @@ angular
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
+    'satellizer'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     
@@ -77,7 +78,8 @@ angular
       .state('dashboard.home',{
         url:'/home',
         controller: 'MainCtrl',
-        templateUrl:'views/dashboard/home.html',
+        templateUrl:'views/dashboard/home.html', 
+        data : {requireLogin : true },
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -125,7 +127,7 @@ angular
     }).state('login',{
         url:'/login',
         controller:'LoginCtrl',
-        templateUrl:'views/login.html',        
+        templateUrl:'views/login.html',       
          resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -140,7 +142,8 @@ angular
     }).state('register',{
         url:'/register',
         controller:'RegisterCtrl',
-        templateUrl:'views/register.html',        
+        templateUrl:'views/register.html',
+        data : {requireLogin : false },      
          resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -157,3 +160,19 @@ angular
   }]);
 
     
+angular.module('sbAdminApp').run(function ($rootScope, $state, $location, $auth) {
+  
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
+
+      var shouldLogin = toState.data !== undefined
+                    && toState.data.requireLogin 
+                    && !$auth.isAuthenticated()  ;
+      if(shouldLogin)
+      {
+        $state.go('login');
+        event.preventDefault();
+        return;
+      }
+
+    });
+});

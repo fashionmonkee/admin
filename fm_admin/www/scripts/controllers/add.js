@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
-	  $scope.page=1;
+	  $scope.page=3;
     $scope.category="1";
     $scope.selectedImages=[];
     $scope.selectedCategory=[];
@@ -123,7 +123,7 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api) {
     };
 
     $scope.removeImages=function(index){
-      $scope.shop.images.splice(index, 1);
+      $scope.selectedImages.splice(index, 1);
     };
 
     
