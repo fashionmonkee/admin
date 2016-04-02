@@ -7,10 +7,11 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('ProfileCtrl', function($scope,$auth,$api,$state) {
-  	$scope.getItems=function(item){
+  .controller('ProfileCtrl', function($scope,$auth,$api,$state,localStorageService) {
+  	$scope.loginData=localStorageService.get('loginData');
+    $scope.getItems=function(item){
   		var getItems=new $api(item);
-  		getItems.get(10).then(function(response) {
+  		getItems.get($scope.loginData.id).then(function(response) {
   			$scope.user=response.data;
   			console.log($scope.user);
 		});
