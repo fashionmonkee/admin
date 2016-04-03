@@ -47,13 +47,29 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state) 
 
 
     $scope.move=function(flag,form){
-      console.log(JSON.stringify($scope.shop));
+      
       if(flag === 'front'){
         $scope.submitted=true;
         if($scope.page === 1 && !form.$valid){
           return;
-        }
+        }else if($scope.page === 1){
+          $scope.search=$scope.shop.address.address1+','+$scope.shop.address.address2+','+$scope.shop.address.city+','+$scope.shop.address.pin+','+$scope.shop.address.country;
+          if (!this.geocoder)
+            this.geocoder = new google.maps.Geocoder();
+            this.geocoder.geocode({ 'address': 'chennai,600042' }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              $scope.shop.address.latitude=results[0].geometry.location.lat();
+              $scope.shop.address.longtitude=results[0].geometry.location.lng();console.log(results[0].geometry.location.lng());
+              $scope.page++;
+              $scope.$apply();
+            } else {
+              $scope.page++;
+              console.log("Sorry, this search produced no results.");
+            }
+          });
+        }else{
         $scope.page++;
+      }
       }else{
         $scope.page--;
       }

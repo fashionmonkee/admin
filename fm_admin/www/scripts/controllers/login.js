@@ -14,7 +14,7 @@ angular.module('sbAdminApp')
       if(!form.$valid){
         return;
       }
-      $auth.login($scope.user,{url:'http://localhost/login'})
+      $auth.login($scope.user,{url:'http://192.168.1.4/login'})
         .then(function(response) {
           localStorageService.set('loginData', response.data);
           $state.go('dashboard.home');

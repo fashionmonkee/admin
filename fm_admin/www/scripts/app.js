@@ -160,6 +160,23 @@ angular
         }
         
     })
+    .state('dashboard.forgot',{
+        url:'/forgot',
+        controller:'forgotCtrl',
+        templateUrl:'views/forgot.html',
+        data : {requireLogin : false },      
+         resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+              'scripts/controllers/forgot.js'
+              ]
+            })
+          }
+        }
+        
+    })
     .state('dashboard.profile',{
         url:'/profile',
         controller:'ProfileCtrl',
@@ -193,6 +210,8 @@ angular
             }
           }
       })
+
+
 
   }]);
 

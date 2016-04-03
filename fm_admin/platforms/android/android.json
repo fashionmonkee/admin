@@ -1,0 +1,87 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"CallNumber\"><param name=\"android-package\" value=\"mx.ferreyra.callnumber.CFCallNumber\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.CALL_PHONE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+            "id": "cordova-plugin-whitelist.whitelist",
+            "pluginId": "cordova-plugin-whitelist",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+            "id": "cordova-plugin-x-socialsharing.SocialSharing",
+            "pluginId": "cordova-plugin-x-socialsharing",
+            "clobbers": [
+                "window.plugins.socialsharing"
+            ]
+        },
+        {
+            "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
+            "id": "mx.ferreyra.callnumber.CallNumber",
+            "pluginId": "mx.ferreyra.callnumber",
+            "clobbers": [
+                "call"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.0",
+        "cordova-plugin-x-socialsharing": "5.0.10",
+        "mx.ferreyra.callnumber": "0.0.2"
+    }
+}
