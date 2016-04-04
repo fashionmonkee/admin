@@ -29,7 +29,7 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state,$
         "state":"",
         "country":"",
         "latitude":"",
-        "longtitude":""
+        "longitude":""
       },
       "category":[],
       "images":[]
@@ -50,16 +50,17 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state,$
       
       if(flag === 'front'){
         $scope.submitted=true;
+        console.log($scope.shop);
         if($scope.page === 1 && !form.$valid){
           return;
         }else if($scope.page === 1){
           $scope.search=$scope.shop.address.address1+','+$scope.shop.address.address2+','+$scope.shop.address.city+','+$scope.shop.address.pin+','+$scope.shop.address.country;
           if (!this.geocoder)
             this.geocoder = new google.maps.Geocoder();
-            this.geocoder.geocode({ 'address': 'chennai,600042' }, function (results, status) {
+            this.geocoder.geocode({ 'address':  $scope.search }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               $scope.shop.address.latitude=results[0].geometry.location.lat();
-              $scope.shop.address.longtitude=results[0].geometry.location.lng();console.log(results[0].geometry.location.lng());
+              $scope.shop.address.longitude=results[0].geometry.location.lng();console.log(results[0].geometry.location.lng());
               $scope.page++;
               $scope.$apply();
             } else {
@@ -87,7 +88,8 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state,$
         $scope.shop=response.data;
     });
     };
-    if(angular.isDefined($stateParams.id)){
+
+    if(angular.isDefined($stateParams.id) && $stateParams.id !== null && $stateParams.id !== ''){
       $scope.getItems("shops");
     }    
 
