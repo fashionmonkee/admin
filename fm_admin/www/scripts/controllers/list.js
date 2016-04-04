@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('ListCtrl', ['$scope', '$timeout','$api','$state', function ($scope, $timeout,$api,$state) {
+  .controller('ListCtrl', ['$scope', '$timeout','$api','$state','$location', function ($scope, $timeout,$api,$state,$location) {
     $scope.getItems=function(item){
       var getItems=new $api(item);
       getItems.list().then(function(response) {
@@ -16,7 +16,7 @@ angular.module('sbAdminApp')
     });
     };
     $scope.edit=function(id){
-    	$state.go('dashboard.add',{data:id});
+    	 $location.path('/' + 'dashboard/add' + '/'+id);
     };
     $scope.getItems("shops");
 }]);

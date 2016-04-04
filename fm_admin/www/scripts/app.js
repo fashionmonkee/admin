@@ -99,7 +99,7 @@ angular
         }
       })
       .state('dashboard.add',{
-        url:'/add',
+        url:'/add/:id',
         controller:'AddCtrl',
         templateUrl:'views/add.html',
         params : { data: null, },        

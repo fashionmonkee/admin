@@ -6,7 +6,7 @@
  * # MainCtrl
  * Controller of the sbAdminApp
  */
-angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state) {
+angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state,$stateParams) {
 	  $scope.page=1;
     $scope.category="1";
     $scope.selectedImages=[];
@@ -77,7 +77,7 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state) 
 
     $scope.getItems=function(item){
       var getItems=new $api(item);
-      getItems.get($state.params.data).then(function(response) {
+      getItems.get($stateParams.id).then(function(response) {
         angular.forEach(response.data.images, function(value, key){
           $scope.selectedImages.push(value.image_url);
         });
@@ -87,7 +87,7 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state) 
         $scope.shop=response.data;
     });
     };
-    if($state.params.data !== null){
+    if(angular.isDefined($stateParams.id)){
       $scope.getItems("shops");
     }    
 
