@@ -8,10 +8,15 @@
                
         <!-- /.navbar-static-side -->
 
-            <div id="page-wrapper" style="min-height: 561px;">
+            <div id="page-wrapper" ng-class="{'noSideBar': !isAuthenticated()}">
 
                 <div ui-view></div>
                 
             </div>
             <!-- /#page-wrapper -->
     </div>
+<style>
+.noSideBar{
+	margin:0px !important;
+}
+</style>
