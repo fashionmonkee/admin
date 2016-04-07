@@ -21,7 +21,7 @@ angular.module('sbAdminApp')
           console.log('You have successfully signed in!');
         })
         .catch(function(error) {
-          console.log(error.data.message, error.status);
+          $scope.errorMsg=error.data;
         });
     };
 
