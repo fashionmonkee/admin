@@ -109,6 +109,14 @@ angular.module('sbAdminApp').controller('AddCtrl', function($scope,$api,$state,$
     };
     $scope.getAreas('areas');
 
+    $scope.getCities=function(endpoint){
+      var Api=new $api(endpoint);
+      Api.list().then(function(response) {
+        $scope.cities=response.data;
+      });
+    };
+    $scope.getCities('cities');
+
 
 
 

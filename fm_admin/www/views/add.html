@@ -57,7 +57,10 @@
                             </div>
                             <div class="form-group">
                                 <label>City*</label>
-                                <input class="form-control" ng-model="shop.address.city" name="city" required>
+                                <select  class="form-control" ng-model="shop.address.city" name="city" required>
+                                    <option value="" disabled>Select city</option>
+                                <option ng-repeat="city in cities" value="{{city.name}}">{{city.name}}</option>
+                                </select>
                                 <span class="error-msg" ng-show="form.city.$invalid && submitted"> This is required </span>
                             </div>
                              <div class="form-group">
